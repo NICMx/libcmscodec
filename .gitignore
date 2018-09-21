@@ -91,6 +91,16 @@ missing
 *.tar
 *.zip
 
+# Check Framework
+*.test
+*.trs
+test-driver
+
+# asn1c
+src/libcmscodec/*.c
+src/libcmscodec/*.h
+src/libcmscodec/Makefile.am.libasncodec
+
 # Temporal files
 *~
 

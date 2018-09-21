@@ -20,6 +20,7 @@ asn1c -Werror -fcompound-names -D $OUTPUT_DIR \
 		*.asn1 || die "Compilation failed."
 rm libcmscodec/Makefile.am.libasncodec
 
+echo "Patching include directories from the source. Please wait; this will take a while..."
 for MODULE in $OUTPUT_DIR/*.h; do
 	HNAME=$(basename $MODULE)
 	sed -i "s|#include <$HNAME>|#include <libcmscodec/$HNAME>|" $OUTPUT_DIR/*.h $OUTPUT_DIR/*.c
