@@ -217,6 +217,11 @@ ASN_MODULE_SOURCES=	\
 	libcmscodec/AttributeCertificateV1.c	\
 	libcmscodec/AttributeCertificateInfoV1.c	\
 	libcmscodec/AttCertVersionV1.c	\
+	libcmscodec/RouteOriginAttestation.c	\
+	libcmscodec/ASID.c	\
+	libcmscodec/ROAIPAddressFamily.c	\
+	libcmscodec/ROAIPAddress.c	\
+	libcmscodec/IPAddress.c	\
 	libcmscodec/BinarySigningTime.c	\
 	libcmscodec/BinaryTime.c
 
@@ -439,6 +444,11 @@ ASN_MODULE_HEADERS=	\
 	libcmscodec/AttributeCertificateV1.h	\
 	libcmscodec/AttributeCertificateInfoV1.h	\
 	libcmscodec/AttCertVersionV1.h	\
+	libcmscodec/RouteOriginAttestation.h	\
+	libcmscodec/ASID.h	\
+	libcmscodec/ROAIPAddressFamily.h	\
+	libcmscodec/ROAIPAddress.h	\
+	libcmscodec/IPAddress.h	\
 	libcmscodec/BinarySigningTime.h	\
 	libcmscodec/BinaryTime.h
 
@@ -549,7 +559,7 @@ ASN_MODULE_SOURCES+=libcmscodec/constr_CHOICE_oer.c
 ASN_MODULE_SOURCES+=libcmscodec/constr_SEQUENCE_oer.c
 ASN_MODULE_SOURCES+=libcmscodec/constr_SET_OF_oer.c
 
-ASN_MODULE_CFLAGS=
+ASN_MODULE_CFLAGS=-DASN_DISABLE_PER_SUPPORT 
 
 lib_LTLIBRARIES=libcmscodec.la
 libcmscodec_la_SOURCES=$(ASN_MODULE_SOURCES) $(ASN_MODULE_HEADERS)
