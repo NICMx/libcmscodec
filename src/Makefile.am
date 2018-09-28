@@ -222,6 +222,8 @@ ASN_MODULE_SOURCES=	\
 	libcmscodec/ROAIPAddressFamily.c	\
 	libcmscodec/ROAIPAddress.c	\
 	libcmscodec/IPAddress.c	\
+	libcmscodec/Manifest.c	\
+	libcmscodec/FileAndHash.c	\
 	libcmscodec/BinarySigningTime.c	\
 	libcmscodec/BinaryTime.c
 
@@ -449,6 +451,8 @@ ASN_MODULE_HEADERS=	\
 	libcmscodec/ROAIPAddressFamily.h	\
 	libcmscodec/ROAIPAddress.h	\
 	libcmscodec/IPAddress.h	\
+	libcmscodec/Manifest.h	\
+	libcmscodec/FileAndHash.h	\
 	libcmscodec/BinarySigningTime.h	\
 	libcmscodec/BinaryTime.h
 
