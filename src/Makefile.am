@@ -21,6 +21,17 @@ ASN_MODULE_SOURCES=	\
 	libcmscodec/AttrSpec.c	\
 	libcmscodec/ACClearAttrs.c	\
 	libcmscodec/ProxyInfo.c	\
+	libcmscodec/IPAddrBlocks.c	\
+	libcmscodec/IPAddressFamily.c	\
+	libcmscodec/IPAddressChoice.c	\
+	libcmscodec/IPAddressOrRange.c	\
+	libcmscodec/IPAddressRange.c	\
+	libcmscodec/IPAddress2.c	\
+	libcmscodec/ASIdentifiers.c	\
+	libcmscodec/ASIdentifierChoice.c	\
+	libcmscodec/ASIdOrRange.c	\
+	libcmscodec/ASRange.c	\
+	libcmscodec/ASId.c	\
 	libcmscodec/Attribute.c	\
 	libcmscodec/AttributeType.c	\
 	libcmscodec/AttributeValue.c	\
@@ -250,6 +261,17 @@ ASN_MODULE_HEADERS=	\
 	libcmscodec/AttrSpec.h	\
 	libcmscodec/ACClearAttrs.h	\
 	libcmscodec/ProxyInfo.h	\
+	libcmscodec/IPAddrBlocks.h	\
+	libcmscodec/IPAddressFamily.h	\
+	libcmscodec/IPAddressChoice.h	\
+	libcmscodec/IPAddressOrRange.h	\
+	libcmscodec/IPAddressRange.h	\
+	libcmscodec/IPAddress2.h	\
+	libcmscodec/ASIdentifiers.h	\
+	libcmscodec/ASIdentifierChoice.h	\
+	libcmscodec/ASIdOrRange.h	\
+	libcmscodec/ASRange.h	\
+	libcmscodec/ASId.h	\
 	libcmscodec/Attribute.h	\
 	libcmscodec/AttributeType.h	\
 	libcmscodec/AttributeValue.h	\
@@ -473,6 +495,8 @@ ASN_MODULE_HEADERS+=libcmscodec/IA5String.h
 ASN_MODULE_SOURCES+=libcmscodec/IA5String.c
 ASN_MODULE_HEADERS+=libcmscodec/INTEGER.h
 ASN_MODULE_SOURCES+=libcmscodec/INTEGER.c
+ASN_MODULE_HEADERS+=libcmscodec/NULL.h
+ASN_MODULE_SOURCES+=libcmscodec/NULL.c
 ASN_MODULE_HEADERS+=libcmscodec/NativeEnumerated.h
 ASN_MODULE_SOURCES+=libcmscodec/NativeEnumerated.c
 ASN_MODULE_HEADERS+=libcmscodec/NativeInteger.h

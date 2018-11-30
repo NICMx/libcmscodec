@@ -7,7 +7,7 @@ function die() {
 
 OUTPUT_DIR=libcmscodec
 
-rm -fr $OUTPUT_DIR
+rm -fr $OUTPUT_DIR || die "Could not delete directory $OUTPUT_DIR."
 mkdir -p $OUTPUT_DIR || die "Could not create directory '$OUTPUT_DIR'."
 
 # I'm using version 0.9.29. (4cc779f)
