@@ -244,7 +244,12 @@ OtherCertificateFormat ::= SEQUENCE {
   otherCertFormat OBJECT IDENTIFIER,
   otherCert ANY DEFINED BY otherCertFormat }
 
-CertificateSet ::= SET OF CertificateChoices
+-- 2018-11-07: I changed this from "CertificateChoices" to "ANY,"
+-- because asn1c should not actually parse the certificate.
+-- That's libcrypto's job.
+-- Note that this means that a good chunk of the grammar is now redundant,
+-- and can probably be sliced off.
+CertificateSet ::= SET OF ANY
 
 IssuerAndSerialNumber ::= SEQUENCE {
   issuer Name,
