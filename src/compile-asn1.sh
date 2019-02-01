@@ -15,7 +15,7 @@ mkdir -p $OUTPUT_DIR || die "Could not create directory '$OUTPUT_DIR'."
 # http://lionet.info/asn1c
 # -gen-autotools isn't doing anything.
 # -no-gen-OER yields incorrect code.
-asn1c -Werror -fcompound-names -D $OUTPUT_DIR \
+asn1c -Werror -fcompound-names -fwide-types -D $OUTPUT_DIR \
 		-no-gen-PER -no-gen-example \
 		*.asn1 || die "Compilation failed."
 
