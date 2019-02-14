@@ -1,18 +1,8 @@
 SignedObjectSyntax
 DEFINITIONS IMPLICIT TAGS ::=
 BEGIN
-
-id-aa-binarySigningTime OBJECT IDENTIFIER ::= {
-	iso(1)
-	member-body(2)
-	us(840)
-	rsadsi(113549)
-	pkcs(1)
-	pkcs9(9)
-	smime(16)
-	aa(2)
-	46
-}
+     -- This version of this ASN.1 module is a subset of   --
+     -- the one defined in rfc6488#section-2.1.6.4.4.      --
 
 BinarySigningTime ::= BinaryTime
 

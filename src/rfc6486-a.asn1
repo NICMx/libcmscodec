@@ -4,19 +4,12 @@ RPKIManifest { iso(1) member-body(2) us(840) rsadsi(113549)
 DEFINITIONS EXPLICIT TAGS ::=
 
 BEGIN
+     -- This version of this ASN.1 module is a subset of   --
+     -- the one defined in rfc6486#appendix-A.             --
 
 -- EXPORTS ALL --
 
 -- IMPORTS NOTHING --
-
--- Manifest Content Type: OID
-
-id-smime OBJECT IDENTIFIER ::= { iso(1) member-body(2)
-   us(840) rsadsi(113549) pkcs(1) pkcs9(9) 16 }
-
-id-ct OBJECT IDENTIFIER ::= { id-smime 1 }
-
-id-ct-rpkiManifest OBJECT IDENTIFIER ::= { id-ct 26 }
 
 -- Manifest Content Type: eContent
 

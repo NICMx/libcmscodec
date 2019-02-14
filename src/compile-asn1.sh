@@ -19,7 +19,7 @@ asn1c -Werror -fcompound-names -fwide-types -D $OUTPUT_DIR \
 		-no-gen-PER -no-gen-example \
 		*.asn1 || die "Compilation failed."
 
-echo "Patching include directories from the source. Please wait; this will take a while. (1 minute on my PC.)"
+echo "Patching include directories from the source. Please wait; this will take a while. (~10 seconds probably.)"
 for MODULE in $OUTPUT_DIR/*.h; do
 	HNAME=$(basename $MODULE)
 	sed -i "s|#include <$HNAME>|#include <libcmscodec/$HNAME>|" $OUTPUT_DIR/*.h $OUTPUT_DIR/*.c
@@ -34,3 +34,4 @@ sed -i '\|libasncodec_la_CPPFLAGS=-I$(top_srcdir)/libcmscodec/|d' $MAKEFILE
 sed -i 's|libasncodec|libcmscodec|' $MAKEFILE
 sed -i 's|lib_LTLIBRARIES+=libcmscodec.la|lib_LTLIBRARIES=libcmscodec.la|' $MAKEFILE
 printf "\nASN_MODULEdir=@includedir@/libcmscodec\n" >> $MAKEFILE
+mv $MAKEFILE Makefile.am
