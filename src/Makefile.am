@@ -20,7 +20,6 @@ ASN_MODULE_SOURCES=	\
 	libcmscodec/Version.c	\
 	libcmscodec/CertificateSerialNumber.c	\
 	libcmscodec/Time.c	\
-	libcmscodec/SubjectPublicKeyInfo.c	\
 	libcmscodec/Extensions.c	\
 	libcmscodec/Extension.c	\
 	libcmscodec/CertificateList.c	\
@@ -82,7 +81,6 @@ ASN_MODULE_HEADERS=	\
 	libcmscodec/Version.h	\
 	libcmscodec/CertificateSerialNumber.h	\
 	libcmscodec/Time.h	\
-	libcmscodec/SubjectPublicKeyInfo.h	\
 	libcmscodec/Extensions.h	\
 	libcmscodec/Extension.h	\
 	libcmscodec/CertificateList.h	\

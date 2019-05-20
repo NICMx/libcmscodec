@@ -4,7 +4,7 @@
 # Run this file to generate the configure script.
 # You'll need the autotools installed!
 
-function die() {
+function die {
 	echo "$1"
 	exit 1
 }

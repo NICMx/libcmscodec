@@ -42,10 +42,6 @@ Time ::= CHOICE {
      utcTime        UTCTime,
      generalTime    GeneralizedTime }
 
-SubjectPublicKeyInfo  ::=  SEQUENCE  {
-     algorithm            AlgorithmIdentifier,
-     subjectPublicKey     BIT STRING  }
-
 Extensions  ::=  SEQUENCE SIZE (1..MAX) OF Extension
 
 Extension  ::=  SEQUENCE  {
