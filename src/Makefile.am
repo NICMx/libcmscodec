@@ -31,6 +31,9 @@ ASN_MODULE_SOURCES=	\
 	libcmscodec/DigestAlgorithmIdentifiers.c	\
 	libcmscodec/SignerInfos.c	\
 	libcmscodec/EncapsulatedContentInfo.c	\
+	libcmscodec/SignedDataPKCS7.c	\
+	libcmscodec/EncapsulatedContentInfoPKCS7.c	\
+	libcmscodec/ContentTypePKCS7.c	\
 	libcmscodec/SignerInfo.c	\
 	libcmscodec/SignerIdentifier.c	\
 	libcmscodec/SignedAttributes.c	\
@@ -92,6 +95,9 @@ ASN_MODULE_HEADERS=	\
 	libcmscodec/DigestAlgorithmIdentifiers.h	\
 	libcmscodec/SignerInfos.h	\
 	libcmscodec/EncapsulatedContentInfo.h	\
+	libcmscodec/SignedDataPKCS7.h	\
+	libcmscodec/EncapsulatedContentInfoPKCS7.h	\
+	libcmscodec/ContentTypePKCS7.h	\
 	libcmscodec/SignerInfo.h	\
 	libcmscodec/SignerIdentifier.h	\
 	libcmscodec/SignedAttributes.h	\
