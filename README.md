@@ -17,8 +17,8 @@ Requirements:
 Procedure:
 
 ```
-wget https://github.com/NICMx/libcmscodec/releases/download/beta1/libcmscodec-beta1.tar.gz
-tar xvzf libcmscodec-beta1.tar.gz
+wget https://github.com/NICMx/libcmscodec/releases/download/beta2/libcmscodec-beta2.tar.gz
+tar xvzf libcmscodec-beta2.tar.gz
 cd libcmscodec*
 ./configure
 make
