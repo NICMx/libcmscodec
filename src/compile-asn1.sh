@@ -5,7 +5,7 @@ function die() {
 	exit 1
 }
 
-OUTPUT_DIR=libcmscodec
+OUTPUT_DIR=asn1/asn1c
 
 rm -fr $OUTPUT_DIR || die "Could not delete directory $OUTPUT_DIR."
 mkdir -p $OUTPUT_DIR || die "Could not create directory '$OUTPUT_DIR'."
@@ -15,23 +15,51 @@ mkdir -p $OUTPUT_DIR || die "Could not create directory '$OUTPUT_DIR'."
 # http://lionet.info/asn1c
 # -gen-autotools isn't doing anything.
 # -no-gen-OER yields incorrect code.
+# -fincludes-quoted is garbage, because it only affects a few files. (ie. those
+# that aren't straight copied from a template.)
 asn1c -Werror -fcompound-names -fwide-types -D $OUTPUT_DIR \
 		-no-gen-PER -no-gen-example \
 		*.asn1 || die "Compilation failed."
 
-echo "Patching include directories from the source. Please wait; this will take a while. (~10 seconds probably.)"
-for MODULE in $OUTPUT_DIR/*.h; do
-	HNAME=$(basename $MODULE)
-	sed -i "s|#include <$HNAME>|#include <libcmscodec/$HNAME>|" $OUTPUT_DIR/*.h $OUTPUT_DIR/*.c
-	sed -i "s|#include \"$HNAME\"|#include \"libcmscodec/$HNAME\"|" $OUTPUT_DIR/*.h $OUTPUT_DIR/*.c
-done
+# That's most of the work done. From now on, we will do some patching on the
+# files asn1c spew.
 
-# Patch Makefile.am.libasncodec
-MAKEFILE=$OUTPUT_DIR/Makefile.am.libasncodec
-sed -i 's|ASN_MODULE_HDRS|ASN_MODULE_HEADERS|' $MAKEFILE
-sed -i 's|ASN_MODULE_SRCS|ASN_MODULE_SOURCES|' $MAKEFILE
-sed -i '\|libasncodec_la_CPPFLAGS=-I$(top_srcdir)/libcmscodec/|d' $MAKEFILE
-sed -i 's|libasncodec|libcmscodec|' $MAKEFILE
-sed -i 's|lib_LTLIBRARIES+=libcmscodec.la|lib_LTLIBRARIES=libcmscodec.la|' $MAKEFILE
-printf "\nASN_MODULEdir=@includedir@/libcmscodec\n" >> $MAKEFILE
-mv $MAKEFILE Makefile.am
+# ------------------------------------------------------------------------------
+
+# First: asn1c output includes like this: #include <file.h>
+# It needs to be like this:               #include "$OUTPUT_DIR/file.h"
+# Why? We don't want the <> syntax because we're not including system headers.
+# And we want all includes to be relative to the root of fort's source (src/).
+# (This prevents some forms of file name collisions.)
+
+# Build a regular expression consisting of the $OUTPUT_DIR files, joined by
+# pipes:
+# 1. ls: Get a list of file names in $OUTPUT_DIR, one per line
+#          AlgorithmIdentifier.c
+#          AlgorithmIdentifier.h
+#          ANY.c
+#          ANY.h
+#          etc
+# 2. paste: join the file names using a pipe character. ("or" character in
+#    regexps.)
+#          AlgorithmIdentifier.c|AlgorithmIdentifier.h|ANY.c|ANY.h|etc
+# 3. sed: Escape the periods. (so they won't mean "anything".)
+#          AlgorithmIdentifier\.c|AlgorithmIdentifier\.h|ANY\.c|ANY\.h|etc
+LS=$(ls -1 $OUTPUT_DIR | paste -sd "|" - | sed -E "s/\./\\\./g")
+# Replace '#include <file.h>' with '#include "$OUTPUT_DIR/file.h" mostly
+# everywhere.
+sed -Ei 's!#include <('"$LS"')>!#include "'"$OUTPUT_DIR"'/\1"!' $OUTPUT_DIR/*.c $OUTPUT_DIR/*.h
+# If you're wondering why we bothered with LS instead of something like (.+\.h),
+# it's because not all #includes need the treatment. For example, some files
+# include <errno.h>, which obviously does not belong to $OUTPUT_DIR.
+
+
+# Second: Fix $OUTPUT_DIR/Makefile.am.libasncodec
+# We want to remove some sample code intended to build some library, which we
+# don't need, and which adds some warnings to the autogen.
+# We do this by removing the last 6 lines of Makefile.am.libasncodec.
+# It's not fireproof, but I can't think of a simple more scalable way to do it.
+# Also rename the file to something that won't be mistaken for an actual
+# Makefile.
+head -n -6 $OUTPUT_DIR/Makefile.am.libasncodec > $OUTPUT_DIR/Makefile.include
+rm $OUTPUT_DIR/Makefile.am.libasncodec

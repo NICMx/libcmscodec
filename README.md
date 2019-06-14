@@ -1,46 +1,30 @@
 # libcmscodec
 
-CMS encoders and decoders.
+This is a code generator. It spawns the original version of [Fort](https://github.com/NICMx/FORT-validator)'s [asn1/asn1c directory](https://github.com/NICMx/FORT-validator/tree/master/src/asn1/asn1c) from scratch.
 
-## Installation
+This is only relevant sometimes during Fort's development. If you're a user, or even a casual developer, you don't care.
 
-Installing a release is a lot easier than the git version.
+## Procedure
 
-### Installing a release
-
-Requirements:
-
-- HTTP object retriever (`wget` exampled below)
-- tar
-- A C compiler
-
-Procedure:
+First, install `asn1c`. You need a relatively recent commit; the last release is not enough.
 
 ```
-wget https://github.com/NICMx/libcmscodec/releases/download/beta2/libcmscodec-beta2.tar.gz
-tar xvzf libcmscodec-beta2.tar.gz
-cd libcmscodec*
+git clone https://github.com/vlm/asn1c.git
+# This is the one I'm currently using as of 2019-06-14, but the newest available is probably best.
+git checkout 88ed3b5cf012918bc1084b606b0624c45e0d2191
+cd asn1c
+# Dummy installation steps follow. You might be better off reading their INSTALL.md instead.
 ./configure
 make
 sudo make install
 ```
 
-### Installing the git version
-
-Requirements:
-
-- git
-- The autotools (in particular, autoconf must be 2.69 or newer)
-- [asn1c](https://github.com/vlm/asn1c) (Note: A relatively recent version is required. I'm currently using commit [88ed3b5](https://github.com/vlm/asn1c/tree/88ed3b5cf012918bc1084b606b0624c45e0d2191).)
-- A C compiler
-
-Procedure:
+Then, go to libcmscodec's repository and run `autogen.sh`.
 
 ```
-git clone https://github.com/NICMx/libcmscodec.git
-cd libcmscodec/
+git clone https://github.com/NICMx/libcmscodec
+cd libcmscodec
 ./autogen.sh
-./configure
-make
-sudo make install
 ```
+
+Then manually copy the resulting `src/asn1/asn1c` directory to Fort.

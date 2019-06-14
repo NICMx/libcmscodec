@@ -96,10 +96,8 @@ missing
 *.trs
 test-driver
 
-# asn1c
-src/libcmscodec/*.c
-src/libcmscodec/*.h
-src/libcmscodec/Makefile.am.libasncodec
+# asn1c compiled output
+src/asn1/asn1c/
 
 # Temporal files
 *~
