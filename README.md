@@ -10,8 +10,8 @@ First, install `asn1c`. You need a relatively recent commit; the last release is
 
 ```
 git clone https://github.com/vlm/asn1c.git
-# This is the one I'm currently using as of 2019-06-14, but the newest available is probably best.
-git checkout 88ed3b5cf012918bc1084b606b0624c45e0d2191
+# This is the one I'm currently using as of 2023-06-30, but the newest available is probably best.
+git checkout 9925dbbda86b436896108439ea3e0a31280a6065
 cd asn1c
 # Dummy installation steps follow. You might be better off reading their INSTALL.md instead.
 ./configure
