@@ -1,3 +1,5 @@
+#!/bin/sh
+
 git clean -dfx \
 	-e .cproject \
 	-e .project \

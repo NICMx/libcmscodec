@@ -45,15 +45,6 @@
 # Log
 *.log
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
 # Eclipse
 .cproject
 .project
@@ -78,7 +69,6 @@ install-sh
 libtool
 ltmain.sh
 missing
-# I think?
 .libs
 
 # Packaging
@@ -97,12 +87,12 @@ missing
 test-driver
 
 # asn1c compiled output
-src/asn1/asn1c/
+libasn1fort
 
 # Temporal files
 *~
 
-# Unwanted manure shat by imbecile OSs
+# Spamfiles spewn by other OSs
 .DS_Store*
 ehthumbs.db
 Icon?

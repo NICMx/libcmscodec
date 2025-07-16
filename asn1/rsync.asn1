@@ -1,0 +1,10 @@
+RsyncSpawnerChannel
+DEFINITIONS EXPLICIT TAGS ::=
+BEGIN
+
+	RsyncRequest ::= SEQUENCE {
+		url	OCTET STRING,
+		path	OCTET STRING
+	}
+
+END
